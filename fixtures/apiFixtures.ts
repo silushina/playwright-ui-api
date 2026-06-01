@@ -1,5 +1,5 @@
 import {test as base} from '@playwright/test';
-import { Booking } from '../page-objects/apiBooking';
+import { Booking } from '../page-objects/booker/apiBooking';
 
 type ApiFixtures = {
     booking: Booking

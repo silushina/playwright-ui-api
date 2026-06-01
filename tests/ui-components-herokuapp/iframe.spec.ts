@@ -1,4 +1,4 @@
-import {test, expect} from '../../fixtures/uiFixture';
+import {test, expect} from '../../fixtures/uiFixtures';
 
 test('Test with iframe', async({iframePage}) => {
     await iframePage.navigateToiFramePage()

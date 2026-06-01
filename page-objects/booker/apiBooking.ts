@@ -1,8 +1,8 @@
 import { APIRequestContext, APIResponse } from "@playwright/test";
-import {BookingData} from '../tests/api/types/apiBooking.types'
+import {BookingData} from '../../tests/api/types/apiBooking.types'
 
 export class Booking {
-    readonly request: APIRequestContext
+    private readonly request: APIRequestContext
     private token: string | null = null
 
     constructor(request: APIRequestContext){
@@ -22,11 +22,6 @@ export class Booking {
         }
         return this.token!
     };
-
-        // const response = await booking.getToken("admin", "password123")
-    // expect(response.status()).toEqual(200)
-    // const responseBody = await response.json()
-    // const token = responseBody.token
 
     async createBooking(bookingData: BookingData): Promise<APIResponse>{
         const response = await this.request.post('/booking', {

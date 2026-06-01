@@ -1,6 +1,6 @@
 import {test as base} from '@playwright/test';
-import { LoginPage } from '../page-objects/loginPage';
-import { IframePage } from '../page-objects/iframePage';
+import { LoginPage } from '../page-objects/herokuapp/loginPage';
+import { IframePage } from '../page-objects/herokuapp/iframePage';
 
 type UiFixtures = {
     loginPage: LoginPage
