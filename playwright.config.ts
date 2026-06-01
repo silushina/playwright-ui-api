@@ -4,9 +4,9 @@ import { defineConfig, devices } from '@playwright/test';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-// import dotenv from 'dotenv';
-// import path from 'path';
-// dotenv.config({ path: path.resolve(__dirname, '.env') });
+import dotenv from 'dotenv';
+import path from 'path';
+dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -26,7 +26,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: 'https://restful-booker.herokuapp.com',
+    //baseURL: 'https://restful-booker.herokuapp.com',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -35,8 +35,31 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] }
+      name: 'booker-api-chromium',
+      testMatch: 'api.spec.ts',
+      use: {
+         ...devices['Desktop Chrome'], 
+         baseURL: 'https://restful-booker.herokuapp.com'}
+    },
+    {
+      name: 'conduit-setup',
+      testMatch: 'auth.setup.ts'
+    },
+    {
+      name: 'conduit-e2e-chromium',
+      testMatch: 'e2e.spec.ts',
+      use: {
+         ...devices['Desktop Chrome'], 
+         baseURL: 'https://conduit.bondaracademy.com/',
+         storageState: '.auth/user.json'},
+      dependencies: ['conduit-setup']
+    },
+    {
+      name: 'herokuapp-ui-components-chromium',
+      testMatch: ['auth.spec.ts', 'iframe.spec.ts'],
+      use: {
+         ...devices['Desktop Chrome'], 
+         baseURL: 'https://the-internet.herokuapp.com/'}
     },
 
     // {

@@ -1,10 +1,10 @@
 import {FrameLocator, Locator, Page} from '@playwright/test';
 
 export class IframePage{
-    readonly page: Page
-    readonly alertButton: Locator
-    readonly frame: FrameLocator
-    readonly iframeBody: Locator
+    private readonly page: Page
+    private readonly alertButton: Locator
+    private readonly frame: FrameLocator
+    private readonly iframeBody: Locator
 
     constructor(page: Page){
         this.page = page

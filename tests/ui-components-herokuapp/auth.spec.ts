@@ -1,4 +1,4 @@
-import {test, expect} from '../../fixtures/uiFixture';
+import {test, expect} from '../../fixtures/uiFixtures';
 import {faker} from '@faker-js/faker';
 
 test.describe('Authentication', () => {
