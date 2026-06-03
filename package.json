@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "api_tests": "npx playwright test api/api.spec.ts",
+    "ui-components_tests": "npx playwright test ui-components-herokuapp",
+    "e2e_test": "npx playwright test e2e-conduit/e2e.spec.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
