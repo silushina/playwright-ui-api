@@ -8,5 +8,5 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
   },
-  "include": ["fixtures/**/*", "page-objects/**/*", "tests/**/*", "playwright.config.ts"]
+  "include": ["fixtures/**/*", "page-objects/**/*", "tests/**/*", "playwright.config.ts", "booker-endpoints/booker", "booker-endpoints/booking.ts", "booker-endpoints/token.ts"]
 }
