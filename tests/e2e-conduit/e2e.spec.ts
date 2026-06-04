@@ -18,6 +18,6 @@ test('Verify that user can create an article', async({mainPage, createArticlePag
 
     await mainPage.navigateToHome()
     const createdArticle = mainPage.getArticle(articleData.title)
-    await expect(createdArticle).toBeVisible()
-    await expect(createdArticle.locator('p')).toContainText(articleData.description)
+    await expect(createdArticle.card).toBeVisible()
+    await expect(createdArticle.description).toContainText(articleData.description)
 })

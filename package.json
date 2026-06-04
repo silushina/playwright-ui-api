@@ -4,9 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "api_tests": "npx playwright test api/api.spec.ts",
-    "ui-components_tests": "npx playwright test ui-components-herokuapp",
-    "e2e_test": "npx playwright test e2e-conduit/e2e.spec.ts"
+    "tests:all": "playwright test",
+    "tests:api": "playwright test api/api.spec.ts --project=booker-api",
+    "tests:ui-components:chromium": "playwright test ui-components-herokuapp --project=herokuapp-ui-components-chromium",
+    "tests:ui-components:firefox": "playwright test ui-components-herokuapp --project=herokuapp-ui-components-firefox",
+    "tests:ui-components:safari": "playwright test ui-components-herokuapp --project=herokuapp-ui-components-webkit",
+    "tests:e2e:chromium": "playwright test e2e-conduit/e2e.spec.ts --project=conduit-e2e-chromium",
+    "tests:e2e:firefox": "playwright test e2e-conduit/e2e.spec.ts --project=conduit-e2e-firefox",
+    "tests:e2e:safari": "playwright test e2e-conduit/e2e.spec.ts --project=conduit-e2e-webkit"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +23,7 @@
     "@types/node": "^25.9.1",
     "ajv": "^8.20.0",
     "ajv-formats": "^3.0.1",
+    "allure-playwright": "^3.9.0",
     "dotenv": "^17.4.2"
   }
 }
