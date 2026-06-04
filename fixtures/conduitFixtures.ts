@@ -1,5 +1,5 @@
 import {test as base} from '@playwright/test';
-import {LoginPage} from '../page-objects/conduit/conduitLoginPage';
+import {LoginPage} from '../page-objects/conduit/loginPage';
 import {CreateArticlePage} from '../page-objects/conduit/createArticlePage';
 import {MainPage} from '../page-objects/conduit/mainPage';
 import {ArticleDetailsPage} from '../page-objects/conduit/articleDetailsPage';

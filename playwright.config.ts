@@ -22,7 +22,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html'], ['allure-playwright']],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
@@ -35,10 +35,9 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'booker-api-chromium',
+      name: 'booker-api',
       testMatch: 'api.spec.ts',
       use: {
-         ...devices['Desktop Chrome'], 
          baseURL: 'https://restful-booker.herokuapp.com'}
     },
     {
@@ -55,13 +54,44 @@ export default defineConfig({
       dependencies: ['conduit-setup']
     },
     {
+      name: 'conduit-e2e-firefox',
+      testMatch: 'e2e.spec.ts',
+      use: {
+         ...devices['Desktop Firefox'], 
+         baseURL: 'https://conduit.bondaracademy.com/',
+         storageState: '.auth/user.json'},
+      dependencies: ['conduit-setup']
+    },
+    {
+      name: 'conduit-e2e-webkit',
+      testMatch: 'e2e.spec.ts',
+      use: {
+         ...devices['Desktop Safari'], 
+         baseURL: 'https://conduit.bondaracademy.com/',
+         storageState: '.auth/user.json'},
+      dependencies: ['conduit-setup']
+    },
+    {
       name: 'herokuapp-ui-components-chromium',
       testMatch: ['auth.spec.ts', 'iframe.spec.ts'],
       use: {
          ...devices['Desktop Chrome'], 
          baseURL: 'https://the-internet.herokuapp.com/'}
     },
-
+    {
+      name: 'herokuapp-ui-components-firefox',
+      testMatch: ['auth.spec.ts', 'iframe.spec.ts'],
+      use: {
+         ...devices['Desktop Firefox'], 
+         baseURL: 'https://the-internet.herokuapp.com/'}
+    },
+    {
+      name: 'herokuapp-ui-components-webkit',
+      testMatch: ['auth.spec.ts', 'iframe.spec.ts'],
+      use: {
+         ...devices['Desktop Safari'], 
+         baseURL: 'https://the-internet.herokuapp.com/'}
+    },
     // {
     //   name: 'firefox',
     //   use: { ...devices['Desktop Firefox'] },

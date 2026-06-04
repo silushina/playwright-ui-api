@@ -33,7 +33,11 @@ export class MainPage{
      await this.signInLink.click()
     }
 
-    getArticle(title: string): Locator{
-        return this.page.locator('.article-preview').filter({hasText: title})
+    getArticle(title: string) {
+        const article = this.page.locator('.article-preview').filter({hasText: title});
+        return {
+            card: article, 
+            description: article.locator('p')
+        };
     }
 }
