@@ -1,10 +1,13 @@
-import {test, expect} from '../../fixtures/uiFixtures';
+import { test, expect } from '../../fixtures/uiFixtures';
 
-test('Test with iframe', async({iframePage}) => {
+test.beforeEach(async({iframePage}) => {
     await iframePage.navigateToiFramePage()
-    await iframePage.closeAlert()
-
-    const iframeText = await iframePage.getIframeBodyContent()
-    expect(iframeText).toBe('Your content goes here.')
 })
 
+test('Verify iframe', async ({ iframePage }) => {
+    await iframePage.navigateToiFramePage();
+    await iframePage.closeAlert();
+
+    const iframeText = await iframePage.getIframeBodyContent();
+    expect(iframeText).toBe('Your content goes here.');
+});
