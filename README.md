@@ -1,8 +1,6 @@
-# Playwright Advanced Automation Framework (TypeScript)
+# Playwright Automation Framework (TypeScript)
 
 This repository contains Test Automation Framework built with **Playwright Test** and **TypeScript** targeting E2E, UI Components, and API testing levels.
-
-The framework is developed with industry best practices, making it highly maintainable and suitable for enterprise-level projects.
 
 ## Tech Stack & Highlights
 - **Language:** TypeScript
@@ -15,7 +13,7 @@ The framework is developed with industry best practices, making it highly mainta
 ## Project Structure
 - `tests/` — Test suites separated by types: `api/`, `e2e-conduit/`, and `ui-components-herokuapp/`
 - `page-objects/` — Page Object Model (POM) classes separating selectors from test logic
-- `helpers/` — API endpoints builders, schemas, and `schemaValidator.ts`
+- `helpers/` — `dataGenerator.ts` and `schemaValidator.ts`
 - `fixtures/` — Custom Playwright fixtures for easy page injection
 - `booker-endpoints/` — Dedicated API layer components
 
