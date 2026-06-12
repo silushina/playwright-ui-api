@@ -8,8 +8,6 @@ test.beforeEach(async({uploadPage}) => {
 test('Verify that file can be uploaded via Choose file button', async ({
     uploadPage,
 }) => {
-    await uploadPage.navigateToUploaderPage();
-
     const testFile = '1MB.jpg';
     const filePath = path.join(__dirname, `../../test-data/${testFile}`);
     await uploadPage.uploadeFileViaChooseFile(filePath);
@@ -21,8 +19,6 @@ test('Verify that file can be uploaded via Choose file button', async ({
 test('Verify that file can be uploaded via Drag&Drop', async ({
     uploadPage,
 }) => {
-    await uploadPage.navigateToUploaderPage();
-
     const testFile = '1MB.jpg';
     const filePath = path.join(__dirname, `../../test-data/${testFile}`);
     await uploadPage.uploadFileViaDragNDrop(filePath);
@@ -34,8 +30,6 @@ test('Verify that file can be uploaded via Drag&Drop', async ({
 test('Verify that multiple files can be uploaded via Drag&Drop', async ({
     uploadPage,
 }) => {
-    await uploadPage.navigateToUploaderPage();
-
     const testFiles = ['1MB.jpg', '6MB.pdf'];
     const filesPathsArray = testFiles.map((file) =>
         path.join(__dirname, `../../test-data/${file}`),

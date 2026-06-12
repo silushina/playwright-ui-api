@@ -20,13 +20,13 @@ const stringColumns = [
 stringColumns.forEach((column) => {
     test(`Verify ${column.name} column with strings is sortable in ASC and DESC orders`, async ({ dataTablePage }) => {
         //sorting ascending 
-        await dataTablePage.clickColumnHeader(column.name);
+        await dataTablePage.clickColumnHeader(column.name, 'asc');
         const ascSortedValues = await dataTablePage.getColumnValues(column.class)
         const ascExpectedValues = [...ascSortedValues].sort((a, b) => a.localeCompare(b))
         expect(ascSortedValues).toEqual(ascExpectedValues)
 
         //sorting descending 
-        await dataTablePage.clickColumnHeader(column.name);
+        await dataTablePage.clickColumnHeader(column.name, 'desc');
         const descSortedValues = await dataTablePage.getColumnValues(column.class)
         const descExpectedValues = [...descSortedValues].sort((a, b) => b.localeCompare(a))
         expect(descSortedValues).toEqual(descExpectedValues)
@@ -42,7 +42,7 @@ numericColumns.forEach((column) => {
         const convertToNum = (val: string) => Number(val.replace('$', ''))
 
         //sorting ascending 
-        await dataTablePage.clickColumnHeader(column.name);
+        await dataTablePage.clickColumnHeader(column.name, 'asc');
         const ascSortedValues = await dataTablePage.getColumnValues(column.class)
         const ascExpectedValues = [...ascSortedValues].sort((a, b) => {
             return convertToNum(a) - convertToNum(b)
@@ -51,7 +51,7 @@ numericColumns.forEach((column) => {
         expect(ascSortedValues).toEqual(ascExpectedValues)
 
         //sorting descending 
-        await dataTablePage.clickColumnHeader(column.name);
+        await dataTablePage.clickColumnHeader(column.name, 'desc');
         const descSortedValues = await dataTablePage.getColumnValues(column.class)
         const descExpectedValues = [...descSortedValues].sort((a, b) => {
             return convertToNum(b) - convertToNum(a)

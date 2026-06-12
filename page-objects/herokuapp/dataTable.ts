@@ -23,13 +23,16 @@ export class DataTablePage{
     }
 
     async getColumnValues(columnClass: 'last-name' | 'first-name' | 'email'| 'dues'| 'web-site'): Promise<string[]>{
-        return await this.secondTable.locator(`tbody tr td.${columnClass}`).allTextContents()
+        const cells = this.secondTable.locator(`tbody tr td.${columnClass}`)
+
+        return await cells.allTextContents()
     }
 
-    async clickColumnHeader(columnName: 'Last Name' | 'First Name' | 'Email'| 'Due'| 'Web Site'): Promise<void>{
+    async clickColumnHeader(columnName: 'Last Name' | 'First Name' | 'Email'| 'Due'| 'Web Site', sortingOrder: 'asc' | 'desc'): Promise<void>{
         const sortedColumnHeader = this.columnHeaders.filter({hasText: columnName})
         await sortedColumnHeader.click()
 
-        await expect(sortedColumnHeader).toHaveClass(/headerSort/)    
+        const expectedClass = (sortingOrder === 'asc') ? 'headerSortDown' : 'headerSortUp'
+        await expect(sortedColumnHeader).toContainClass(expectedClass)    
     } 
 }

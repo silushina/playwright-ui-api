@@ -5,7 +5,6 @@ test.beforeEach(async({iframePage}) => {
 })
 
 test('Verify iframe', async ({ iframePage }) => {
-    await iframePage.navigateToiFramePage();
     await iframePage.closeAlert();
 
     const iframeText = await iframePage.getIframeBodyContent();
